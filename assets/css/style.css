@@ -567,16 +567,23 @@ h6 {
   }
 }
 
+/* Carrossel */
 
-/*Carrosel*/
-
+/* Estilos gerais */
 .scroll {
-  margin: 0; 
-  padding-top: 50px; 
-  width: 100%; 
+  margin: 0;
+  padding-top: 20px;
+  width: 100%;
   position: relative;
-  height: 100%px; 
+  height: 250px; /* Altura do carrossel ajustada */
   overflow: hidden;
+  -webkit-mask: linear-gradient(
+    to right,
+    transparent,
+    black 15%,
+    black 85%,
+    transparent
+  );
   mask: linear-gradient(
     to right,
     transparent,
@@ -586,24 +593,52 @@ h6 {
   );
 }
 
-
-
 .scroll__container {
   display: flex;
   width: max-content;
-  gap: 10px;
-  animation: scrollInfinito 20s linear infinite;
+  gap: 15px; /* Espaçamento maior entre itens */
+  animation: scrollInfinito 15s linear infinite;
 }
 
 .scroll__item {
+  display: flex;
+  justify-content: center; /* Centraliza conteúdo horizontalmente */
+  align-items: center; /* Centraliza conteúdo verticalmente */
   border-radius: 5px;
-  width: 50%;
-
+  width: 150px; /* Aumentado para 150px */
+  height: 150px; /* Aumentado para 150px */
+  overflow: hidden; /* Evita que imagens maiores saiam da borda */
 }
 
+/* Garantir que as imagens se ajustem */
+.scroll__item img {
+  width: 100%; /* Preenche a largura do item */
+  height: 100%; /* Preenche a altura do item */
+  object-fit: cover; /* Ajusta para cobrir sem cortes excessivos */
+}
+
+/* Animação */
 @keyframes scrollInfinito {
   to {
-    translate: calc(-50% - 5px);
+    transform: translateX(calc(-50% - 5px));
+  }
+}
+
+/* Ajustes para dispositivos móveis */
+@media (max-width: 768px) {
+  .scroll {
+    padding-top: 10px;
+    height: 200px; /* Altura reduzida para mobile */
+  }
+
+  .scroll__item {
+    width: 120px; /* Tamanho menor em dispositivos móveis */
+    height: 120px;
+  }
+
+  .scroll__container {
+    gap: 10px; /* Ajusta espaçamento no mobile */
+    animation: scrollInfinito 10s linear infinite; /* Velocidade ajustada */
   }
 }
 
@@ -682,27 +717,27 @@ section {
 
 .icones_ferramentas {
   display: flex;
-  gap: 10px; /* Espaçamento consistente entre itens */
+  gap: 10px; 
   justify-content: flex-start; 
-  flex-wrap: wrap; /* Permite que os itens quebrem linha */
+  flex-wrap: wrap; 
 }
 
 .icones_ferramentas img {
-  width: 80px; 
+  width: 70px; 
   height: auto; 
   margin-right: 20px;
-  margin-top: 10px; /* Use apenas uma definição */
+  margin-top: 10px; 
 }
 
 @media (max-width: 768px) {
   .icones_ferramentas {
-    justify-content: left; /* Centraliza o conteúdo em telas menores */
-    gap: 20px; /* Espaçamento mais amplo em dispositivos pequenos */
+    justify-content: left; 
+    gap: 20px;
   }
   .icones_ferramentas img {
-    width: 60px; /* Diminui o tamanho dos ícones */
-    margin-right: 10px; /* Reduz o espaçamento lateral */
-    margin-top: 15px; /* Espaçamento vertical consistente */
+    width: 60px; 
+    margin-right: 10px;
+    margin-top: 15px;
   }
 
   .conteudo_expertise .content p:last-child {
@@ -749,11 +784,22 @@ section {
 }
 
 
+/* Geral */
+#conteudo_skill {
+  padding: 50px 0; 
+  background-color: #000; 
+}
+
+.section-title h1 {
+  font-size: 2rem;
+  margin-bottom: 30px; 
+}
+
 .icon-carousel {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
+  margin-bottom: 20px; 
 }
 
 .wheel {
@@ -798,6 +844,7 @@ section {
   transform: rotate(270deg) translateX(70px);
 }
 
+/* Animação */
 @keyframes rotateWheel {
   0% {
     transform: rotate(0deg);
@@ -807,15 +854,26 @@ section {
   }
 }
 
+/* Texto */
+.content p {
+  line-height: 1.8; 
+  font-size: 1rem;
+  margin-top: 20px; 
+}
+
 /* Responsividade */
 @media (max-width: 991px) {
-  .row {
+  #conteudo_skill .row {
     flex-direction: column;
-    text-align: center;
+    text-align: center; 
+  }
+
+  .section-title h1 {
+    font-size: 1.8rem; 
   }
 
   .icon-carousel {
-    margin-top: 20px;
+    margin-bottom: 30px; 
   }
 
   .wheel {
@@ -827,7 +885,17 @@ section {
     width: 40px;
     height: 40px;
   }
+
+  .content {
+    margin-top: 20px; 
+  }
+
+  .content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
 }
+
 
 
 /*Projetos*/
@@ -862,7 +930,7 @@ section {
   flex-wrap: wrap; 
 }
 .icones_ferramentas img {
-  width: 80px; 
+  width: 70px; 
   height: auto;
   margin-right: 20px;
   margin-top: 10px;
